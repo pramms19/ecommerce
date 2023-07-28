@@ -2,17 +2,18 @@ import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import NavIcons from "./components/NavIcons";
-import Card from "./components/Card";
+import Hotpicks from "./components/Hotpicks";
+import { axiosClient } from "./Api";
 
 function App() {
   return (
-    <div class="homepage">
-      <div class="flex items-center justify-between px-16 mb-2 p-3">
+    <div class="homepage px-16">
+      <div class="flex items-center justify-between mb-2 p-4 text-lg">
         <Header />
         <Navbar />
         <NavIcons />
       </div>
-      <Card />
+      <Hotpicks />
     </div>
   );
 }

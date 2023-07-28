@@ -1,19 +1,13 @@
 import { useState } from "react";
 import ReactStars from "react-rating-star-with-type";
 
-const Rating = () => {
-  const [star, setStar] = useState(5);
-
-  const onChange = (nextValue) => {
-    setStar(nextValue);
-  };
-
+const Rating = ({ rate }) => {
   return (
     <ReactStars
-      onChange={onChange}
-      value={3}
+      value={rate}
       edit={false}
       activeColors={["#FBBF24"]}
+      size={24}
     />
   );
 };

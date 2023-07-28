@@ -18,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <ul class="flex gap-16 text-justify font-thin  hover:bg-gray-50">
+    <ul class="flex gap-16 text-justify text-lg font-thin  hover:bg-gray-50">
       <li class="flex">
         <MenuDropdown title="Winter" list={winterItems} />
       </li>

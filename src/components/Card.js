@@ -1,22 +1,22 @@
 import Rating from "./Rating";
 
-const Card = () => {
+const Card = ({ product }) => {
   return (
-    <div class="Card">
-      <div class="flex flex-col justify-center items-stretch px-8 gap-16px py-4 h-299px rounded">
-        <div class="box-border hover:grey">
-          <img
-            class="aspect-auto w-48 rounded "
-            src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNsb3RoZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-            alt="img"
-          />
+    <div className=" bg-gray-50 hover:drop-shadow-lg hover:scale-105 p-4">
+      <img
+        className="aspect-[4/3] w-full rounded object-contain my-4"
+        src={product.image}
+        alt="img"
+      />
 
-          <div class="text-left text-sm font-sans leading-5">Product Name</div>
-          <div class="text-left text-m font-bold">$120</div>
-          <div class="text-left text-sm">
-            <Rating />
-          </div>
-        </div>
+      <div className="text-left text-xl ">{product.title}</div>
+
+      <div className="text-left text-2xl font-medium my-2">
+        $ {product.price}
+      </div>
+
+      <div className="text-left text-base">
+        <Rating rate={product.rating.rate} />
       </div>
     </div>
   );
