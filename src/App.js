@@ -11,8 +11,8 @@ import { axiosClient } from "./Api";
 function App() {
   return (
     <div className="home">
-      <div class="homepage px-16">
-        <div class="border-box w-1440px flex items-center justify-between mb-2 p-4 text-lg">
+      <div className="homepage px-16">
+        <div className="border-box w-1440px flex items-center justify-between mb-2 p-4 text-lg">
           <Header />
           <Navbar />
           <NavIcons />

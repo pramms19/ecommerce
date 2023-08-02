@@ -5,7 +5,7 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 
 const Icons = () => {
   return (
-    <ul class="flex gap-8 ">
+    <ul className="flex gap-8 ">
       <li>
         <RiPinterestFill />
       </li>

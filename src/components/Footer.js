@@ -3,7 +3,7 @@ import { LogowImg } from "../assests";
 
 const Footer = () => {
   return (
-    <div className="w-1440px  text-white bg-[#001427] px-32 ">
+    <div className="w-1440px  text-white bg-[#001427] px-52 ">
       <div className="flex pt-16 space-x-80">
         <ul>
           <div className="text-lg pb-8">Navigate</div>

@@ -27,10 +27,11 @@ const MenuDropdown = ({ title, list }) => {
         >
           <Menu.Items className="absolute right-0 z-10 mt-8 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             {list.map((link) => (
-              <Menu.Item>
+              <Menu.Item key={link.title}>
                 {({ active }) => (
                   // eslint-disable-next-line jsx-a11y/anchor-is-valid
                   <a
+                    key={link.title}
                     href="#"
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",

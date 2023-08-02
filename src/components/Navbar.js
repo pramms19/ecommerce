@@ -18,11 +18,11 @@ const Navbar = () => {
   ];
 
   return (
-    <ul class="flex gap-16 text-justify text-lg font-thin  hover:bg-gray-50">
-      <li class="flex">
+    <ul className="flex gap-16 text-justify text-lg font-thin  hover:bg-gray-50">
+      <li className="flex">
         <MenuDropdown title="Winter" list={winterItems} />
       </li>
-      <li class="flex">
+      <li className="flex">
         <MenuDropdown title="Summer" list={summerItems} />
       </li>
 
