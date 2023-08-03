@@ -7,6 +7,7 @@ import Hotpicks from "./components/Hotpicks";
 import NewArrivals from "./components/NewArrivals";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
+import Detail from "./components/Detail";
 import { axiosClient } from "./Api";
 
 function App() {
@@ -22,9 +23,11 @@ function App() {
       </div>
       <div className="px-16">
         <Hotpicks />
+        <Detail />
       </div>
       <NewArrivals />
       <Categories />
+
       <Footer />
     </div>
   );
