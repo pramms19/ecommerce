@@ -10,7 +10,7 @@ const Button = ({ color, text, icon, onClick }) => {
     <button onClick={onClick} className={btnClass}>
       <div className="flex items-stretch">
         {icon}
-        {text}
+        <span className="ml-2">{text}</span>
       </div>
     </button>
   );

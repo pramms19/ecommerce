@@ -1,4 +1,5 @@
 import MenuDropdown from "./MenuDropdown";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const winterItems = [
@@ -26,7 +27,10 @@ const Navbar = () => {
         <MenuDropdown title="Summer" list={summerItems} />
       </li>
 
-      <li>Accessories</li>
+      <li>
+        {" "}
+        <Link to="/products/categories/jewelery">Jewelleries </Link>
+      </li>
       <li>Dresses</li>
       <li>Shoes</li>
     </ul>
