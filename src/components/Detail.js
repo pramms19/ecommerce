@@ -11,10 +11,6 @@ import { get } from "../Api";
 const Detail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  console.log(
-    "🚀 ~ file: Detail.js:14 ~ Detail ~ product:",
-    product.rating?.rate
-  );
 
   const getProduct = async () => {
     const res = await get(`/products/${id}`);

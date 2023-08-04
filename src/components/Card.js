@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   return (
     <Link to={`/products/${product.id}`}>
-      <div className="  hover:drop-shadow-lg hover:scale-105 p-4">
+      <div className=" bg-gray-50 hover:drop-shadow-lg hover:scale-105 p-4">
         <img
           className="aspect-[4/3] w-full rounded object-contain my-4"
           src={product.image}
@@ -17,7 +17,7 @@ const Card = ({ product }) => {
           $ {product.price}
         </div>
 
-        <div className="text-left ">
+        <div className="text-left text-base">
           <Rating rate={product.rating.rate} />
         </div>
       </div>

@@ -4,7 +4,6 @@ import Card from "./Card";
 
 const Jewellery = () => {
   const [products, setProducts] = useState([]);
-  console.log("🚀 ~ file: Jewellery.js:7 ~ Jewellery ~ products:", products);
 
   const getProducts = async () => {
     const res = await get("/products/category/jewelery");
