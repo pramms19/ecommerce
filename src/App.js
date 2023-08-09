@@ -11,6 +11,10 @@ import Detail from "./components/Detail";
 import Jewellery from "./components/Jewellery";
 import { axiosClient } from "./Api";
 import { Routes, Route } from "react-router-dom";
+import Men from "./components/Men";
+import Women from "./components/Women";
+import Login from "./components/Login";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -53,6 +57,46 @@ function App() {
             <>
               {" "}
               <Jewellery />
+            </>
+          }
+        />
+
+        <Route
+          path="/products/categories/men's clothing"
+          element={
+            <>
+              {" "}
+              <Men />
+            </>
+          }
+        />
+
+        <Route
+          path="/products/categories/women's clothing"
+          element={
+            <>
+              {" "}
+              <Women />
+            </>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <>
+              {" "}
+              <Login />
+            </>
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <>
+              {" "}
+              <Cart />
             </>
           }
         />

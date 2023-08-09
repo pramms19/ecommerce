@@ -2,6 +2,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { RiHeartLine } from "react-icons/ri";
 import { RiUser3Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const NavIcons = () => {
   return (
@@ -16,7 +17,9 @@ const NavIcons = () => {
         <RiHeartLine />
       </li>
       <li>
-        <RiUser3Line />
+        <Link to="/login">
+          <RiUser3Line />
+        </Link>
       </li>
     </ul>
   );

@@ -23,7 +23,7 @@ const NewArrivals = () => {
             <div>
               <div className="text-[#001427] text-4xl py-12">New Arrivals</div>
 
-              <Button text="Explore" />
+              <Button color="dark" text="Explore" />
             </div>
           </div>
 

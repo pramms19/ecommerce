@@ -3,7 +3,9 @@ import { LogoImg } from "../assests";
 const Header = () => (
   <div>
     {" "}
-    <LogoImg />
+    <a href="/">
+      <LogoImg />
+    </a>
   </div>
 );
 
