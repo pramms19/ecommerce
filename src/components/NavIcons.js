@@ -11,7 +11,9 @@ const NavIcons = () => {
         <RiSearchLine />
       </li>
       <li>
-        <RiShoppingBagLine />
+        <Link to="/cart">
+          <RiShoppingBagLine />
+        </Link>
       </li>
       <li>
         <RiHeartLine />

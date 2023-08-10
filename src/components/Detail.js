@@ -5,12 +5,18 @@ import Button from "./Button";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { RiHeartLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { get } from "../Api";
+import { useCartDispatch, useCart } from "../CartContext.js";
+import { toast } from "react-toastify";
 
 const Detail = () => {
+  const items = useCart();
+  console.log("🚀 ~ file: Cart.js:10 ~ Cart ~ items:", items);
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const dispatch = useCartDispatch();
+  const notify = () => toast("Added to bag");
 
   const getProduct = async () => {
     const res = await get(`/products/${id}`);
@@ -66,14 +72,20 @@ const Detail = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full">
-                <Link to="/cart">
-                  <Button
-                    icon={<RiShoppingBagLine />}
-                    size="big"
-                    text="Add to bag"
-                  />
-                </Link>
+              <div className="w-full px-8">
+                <Button
+                  icon={<RiShoppingBagLine />}
+                  size="big"
+                  text="Add to bag"
+                  onClick={() => {
+                    dispatch({
+                      type: "added",
+                      product: product,
+                      quantity: 1,
+                    });
+                    notify("added");
+                  }}
+                />
               </div>
             </div>
           </div>

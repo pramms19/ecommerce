@@ -15,95 +15,101 @@ import Men from "./components/Men";
 import Women from "./components/Women";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
+import { CartProvider } from "./CartContext.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="home">
-      <div className="border-box w-1440px flex items-center justify-between mb-2 p-4 text-lg px-16">
-        <Header />
-        <Navbar />
-        <NavIcons />
+    <CartProvider>
+      <div className="home">
+        <div className="border-box w-1440px flex items-center justify-between mb-2 p-4 text-lg px-16">
+          <Header />
+          <Navbar />
+          <NavIcons />
+        </div>
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <div>
+                  <Explore />
+                </div>
+                <div className="px-16">
+                  <Hotpicks />
+                </div>
+                <NewArrivals />
+                <Categories />
+              </>
+            }
+          />
+
+          <Route
+            path="/products/:id"
+            element={
+              <>
+                {" "}
+                <Detail />
+              </>
+            }
+          />
+          <Route
+            path="/products/categories/jewelery"
+            element={
+              <>
+                {" "}
+                <Jewellery />
+              </>
+            }
+          />
+
+          <Route
+            path="/products/categories/men's clothing"
+            element={
+              <>
+                {" "}
+                <Men />
+              </>
+            }
+          />
+
+          <Route
+            path="/products/categories/women's clothing"
+            element={
+              <>
+                {" "}
+                <Women />
+              </>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <>
+                {" "}
+                <Login />
+              </>
+            }
+          />
+
+          <Route
+            path="/cart"
+            element={
+              <>
+                {" "}
+                <Cart />
+              </>
+            }
+          />
+        </Routes>
+
+        <Footer />
+        <ToastContainer />
       </div>
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <div>
-                <Explore />
-              </div>
-              <div className="px-16">
-                <Hotpicks />
-              </div>
-              <NewArrivals />
-              <Categories />
-            </>
-          }
-        />
-
-        <Route
-          path="/products/:id"
-          element={
-            <>
-              {" "}
-              <Detail />
-            </>
-          }
-        />
-        <Route
-          path="/products/categories/jewelery"
-          element={
-            <>
-              {" "}
-              <Jewellery />
-            </>
-          }
-        />
-
-        <Route
-          path="/products/categories/men's clothing"
-          element={
-            <>
-              {" "}
-              <Men />
-            </>
-          }
-        />
-
-        <Route
-          path="/products/categories/women's clothing"
-          element={
-            <>
-              {" "}
-              <Women />
-            </>
-          }
-        />
-
-        <Route
-          path="/login"
-          element={
-            <>
-              {" "}
-              <Login />
-            </>
-          }
-        />
-
-        <Route
-          path="/cart"
-          element={
-            <>
-              {" "}
-              <Cart />
-            </>
-          }
-        />
-      </Routes>
-
-      <Footer />
-    </div>
+    </CartProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { get } from "../Api";
 import Card from "./Card";
+import Categories from "./Categories";
 
 const Men = () => {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,8 @@ const Men = () => {
         {products.length > 0 &&
           products.map((product) => <Card product={product} />)}
       </div>
+      <div className="text-3xl font-medium py-12">More on Chic Seduire:</div>
+      <Categories />
     </div>
   );
 };
