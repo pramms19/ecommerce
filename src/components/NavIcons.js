@@ -16,7 +16,9 @@ const NavIcons = () => {
         </Link>
       </li>
       <li>
-        <RiHeartLine />
+        <Link to="/wishlist">
+          <RiHeartLine />
+        </Link>
       </li>
       <li>
         <Link to="/login">

@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useCart } from "../CartContext";
 import axios from "axios";
 import { get } from "../Api";
-import Button from "./Button";
-import Categories from "./Categories";
+import Button from "../components/Button";
+import Categories from "../components/Categories";
 
 const Cart = () => {
   const { id } = useParams();

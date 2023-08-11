@@ -37,8 +37,14 @@ const post = async (url, data) => {
 };
 
 const patch = async (url, data) => {
-  const res = await axiosClient.patch(url, data);
-  return res;
+  const res = await axiosClient
+    .patch(url, data)
+    .then((res) => res)
+    .catch((err) => {
+      toast(err?.message || "Error");
+      console.error(err);
+      return res;
+    });
 };
 
 export { get, post, patch };

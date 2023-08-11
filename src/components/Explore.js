@@ -11,7 +11,7 @@ const Explore = () => {
         <div className="absolute flex flex-col items-center justify-center text-center inset-0">
           <div className="text-6xl text-white justify-center py-8">Men</div>
           <Link to="/products/categories/men's clothing">
-            <Button color="dark" text="Explore" />
+            <Button color="light" text="Explore" />
           </Link>
         </div>
       </div>
@@ -23,7 +23,7 @@ const Explore = () => {
             Women
           </div>
           <Link to="/products/categories/women's clothing">
-            <Button color="dark" text="Explore" />
+            <Button color="light" text="Explore" />
           </Link>
         </div>
       </div>

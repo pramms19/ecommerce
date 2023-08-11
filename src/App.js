@@ -7,17 +7,18 @@ import Hotpicks from "./components/Hotpicks";
 import NewArrivals from "./components/NewArrivals";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
-import Detail from "./components/Detail";
-import Jewellery from "./components/Jewellery";
+import Detail from "./pages/Detail";
+import Jewellery from "./pages/Jewellery";
 import { axiosClient } from "./Api";
 import { Routes, Route } from "react-router-dom";
-import Men from "./components/Men";
-import Women from "./components/Women";
-import Login from "./components/Login";
-import Cart from "./components/Cart";
+import Men from "./pages/Men";
+import Women from "./pages/Women";
+import Login from "./pages/Login";
+import Cart from "./pages/Cart";
 import { CartProvider } from "./CartContext.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -101,6 +102,16 @@ function App() {
               <>
                 {" "}
                 <Cart />
+              </>
+            }
+          />
+
+          <Route
+            path="/wishlist"
+            element={
+              <>
+                {" "}
+                <Wishlist />
               </>
             }
           />

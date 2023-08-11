@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "../components/Button";
 
 const baseURL = "https://fakestoreapi.com/auth/login";
 
@@ -28,7 +28,6 @@ const Login = () => {
         console.log(response);
       })
       .catch((error) => {
-        console.log("This is error block");
         console.log(error);
       });
   };
@@ -101,8 +100,12 @@ const Login = () => {
                 <p role="alert">You have exceeded the max length</p>
               )}
             </div>
-            <button onClick={handleSubmit(handleOnSubmit)} type="submit">
-              <Button color="dark" text="Login" />
+            <button
+              onClick={handleSubmit(handleOnSubmit)}
+              type="submit"
+              className="flex-row w-full py-4"
+            >
+              <Button size="big" text="Login" />
             </button>
           </div>
         </form>
