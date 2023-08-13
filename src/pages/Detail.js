@@ -1,16 +1,23 @@
-import Rating from "./Rating";
-import Color from "./Color";
-import Size from "./Size";
-import Button from "./Button";
+import Rating from "../components/Rating";
+import Color from "../components/Color";
+import Size from "../components/Size";
+import Button from "../components/Button";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { RiHeartLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { get } from "../Api";
+import { useCartDispatch, useCart } from "../CartContext.js";
+import { toast } from "react-toastify";
+import { RiHeartFill } from "react-icons/ri";
 
 const Detail = () => {
+  const items = useCart();
+  console.log("🚀 ~ file: Cart.js:10 ~ Cart ~ items:", items);
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const dispatch = useCartDispatch();
+  const notify = () => toast("Added to bag");
 
   const getProduct = async () => {
     const res = await get(`/products/${id}`);
@@ -23,7 +30,7 @@ const Detail = () => {
 
   return (
     <div className="px-16 pb-16 w-full">
-      <p className="py-8">{product.category}</p>
+      <div className="py-8 text-[#8D8D8D]">{product.category}</div>
       {product && (
         <div className="flex">
           <div className="flex items-center bg-[#FAF9F6]">
@@ -38,7 +45,18 @@ const Detail = () => {
               <div className="px-8 text-4xl font-medium ">
                 <div className="flex justify-between">
                   <div>{product.title}</div>
-                  <RiHeartLine />
+                  <button
+                    onClick={() => {
+                      dispatch({
+                        type: "added",
+                        product: product,
+                        quantity: 1,
+                      });
+                      notify("added");
+                    }}
+                  >
+                    <RiHeartLine />
+                  </button>
                 </div>
 
                 <div className="py-8">
@@ -51,9 +69,9 @@ const Detail = () => {
                 <div className="p-8 text-lg">
                   Color
                   <div className="flex-col space-x-2">
-                    <Color />
-                    <Color />
-                    <Color />
+                    <Color color="blue" />
+                    <Color color="black" />
+                    <Color color="gray" />
                   </div>
                 </div>
                 <div className="p-8 text-lg">
@@ -66,14 +84,20 @@ const Detail = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full">
-                <Link to="/cart">
-                  <Button
-                    icon={<RiShoppingBagLine />}
-                    size="big"
-                    text="Add to bag"
-                  />
-                </Link>
+              <div className="w-full px-8">
+                <Button
+                  icon={<RiShoppingBagLine />}
+                  size="big"
+                  text="Add to bag"
+                  onClick={() => {
+                    dispatch({
+                      type: "added",
+                      product: product,
+                      quantity: 1,
+                    });
+                    notify("added");
+                  }}
+                />
               </div>
             </div>
           </div>
