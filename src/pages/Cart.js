@@ -15,7 +15,9 @@ const Cart = () => {
   const sum =
     Array.isArray(items.cartItems) &&
     items.cartItems.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue.product.price * currentValue.quantity;
+      return (
+        accumulator + currentValue.product.price * currentValue.product.quantity
+      );
     }, 0);
 
   const getCart = async () => {

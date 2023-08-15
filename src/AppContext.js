@@ -80,16 +80,35 @@ function appReducer(items, action) {
       };
     }
     case "addedWishList": {
-      return {
-        ...items,
-        wishlistItems: [
-          ...items.wishlistItems,
-          {
-            quantity: action.quantity,
-            product: action.product,
-          },
-        ],
-      };
+      if (
+        items.wishlistItems.filter((val) => {
+          console.log("val", val);
+          return val.product.id === action.product.id;
+        }).length > 0
+      ) {
+        return {
+          ...items,
+          wishlistItems: items.wishlistItems.map((item, idx) =>
+            item.product.id === action.product.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1,
+                }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...items,
+          wishlistItems: [
+            ...items.wishlistItems,
+            {
+              quantity: action.quantity,
+              product: action.product,
+            },
+          ],
+        };
+      }
     }
     case "changedWishList": {
       return {
