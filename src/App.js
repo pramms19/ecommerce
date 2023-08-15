@@ -15,7 +15,7 @@ import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import { CartProvider } from "./CartContext.js";
+import { CartProvider } from "./AppContext.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
@@ -118,7 +118,7 @@ function App() {
         </Routes>
 
         <Footer />
-        <ToastContainer />
+        <ToastContainer position="bottom-right" />
       </div>
     </CartProvider>
   );

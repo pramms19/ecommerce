@@ -7,17 +7,15 @@ import { RiHeartLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "../Api";
-import { useCartDispatch, useCart } from "../CartContext.js";
+import { useCartDispatch } from "../AppContext.js";
 import { toast } from "react-toastify";
-import { RiHeartFill } from "react-icons/ri";
 
 const Detail = () => {
-  const items = useCart();
-  console.log("🚀 ~ file: Cart.js:10 ~ Cart ~ items:", items);
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const dispatch = useCartDispatch();
   const notify = () => toast("Added to bag");
+  const notif = () => toast("Added to wishlist");
 
   const getProduct = async () => {
     const res = await get(`/products/${id}`);
@@ -26,6 +24,7 @@ const Detail = () => {
 
   useEffect(() => {
     getProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -48,11 +47,11 @@ const Detail = () => {
                   <button
                     onClick={() => {
                       dispatch({
-                        type: "added",
+                        type: "addedWishList",
                         product: product,
                         quantity: 1,
                       });
-                      notify("added");
+                      notif("addedWishList");
                     }}
                   >
                     <RiHeartLine />
@@ -91,11 +90,11 @@ const Detail = () => {
                   text="Add to bag"
                   onClick={() => {
                     dispatch({
-                      type: "added",
+                      type: "addedCart",
                       product: product,
                       quantity: 1,
                     });
-                    notify("added");
+                    notify("addedCart");
                   }}
                 />
               </div>
