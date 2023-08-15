@@ -92,7 +92,6 @@ function appReducer(items, action) {
             item.product.id === action.product.id
               ? {
                   ...item,
-                  quantity: item.quantity + 1,
                 }
               : item
           ),
