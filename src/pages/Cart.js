@@ -13,8 +13,8 @@ const Cart = () => {
   const dispatch = useCartDispatch();
 
   const sum =
-    Array.isArray(items) &&
-    items.reduce((accumulator, currentValue) => {
+    Array.isArray(items.cartItems) &&
+    items.cartItems.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.product.price * currentValue.quantity;
     }, 0);
 
@@ -27,7 +27,7 @@ const Cart = () => {
     getCart();
   }, []);
 
-  if (items.cartItems.length === 0) {
+  if (items.cartItems?.length === 0) {
     return (
       <div className="px-16 py-8 text-center text-2xl">Your cart is empty.</div>
     );
@@ -50,7 +50,7 @@ const Cart = () => {
             <hr className="pb-8" />
           </thead>
 
-          {items.cartItems.map((item) => (
+          {items.cartItems?.map((item) => (
             <tbody>
               <tr className="text-center text-xl">
                 <td className="px-4 py-4">

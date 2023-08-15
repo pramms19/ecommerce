@@ -27,22 +27,29 @@ export function useCartDispatch() {
 function appReducer(items, action) {
   switch (action.type) {
     case "addedCart": {
+      console.log("items", items);
       if (
-        items.cartItems.filter((val) => val.product.id === action.product.id)
-          .length > 0
+        items.cartItems.filter((val) => {
+          console.log("val", val);
+          return val.product.id === action.product.id;
+        }).length > 0
       ) {
-        return items.cartItems.map((item, idx) => {
-          if (item.product.id === action.product.id) {
-            items[idx] = { quantity: item.quantity + 1, ...item };
-          }
-
-          return item;
-        });
+        return {
+          ...items,
+          cartItems: items.cartItems.map((item, idx) =>
+            item.product.id === action.product.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1,
+                }
+              : item
+          ),
+        };
       } else {
         return {
           ...items,
           cartItems: [
-            ...items.cartItems,
+            ...(items?.cartItems || []),
             {
               quantity: action.quantity,
               product: action.product,
@@ -54,7 +61,7 @@ function appReducer(items, action) {
     case "changedCart": {
       return {
         ...items,
-        cartItems: items.cartItems.map((item) => {
+        cartItems: items.cartItems?.map((item) => {
           if (item.product.id === action.product.id) {
             return action.cart;
           } else {
@@ -67,7 +74,7 @@ function appReducer(items, action) {
     case "deletedCart": {
       return {
         ...items,
-        cartItems: items.cartItems.filter(
+        cartItems: items.cartItems?.filter(
           (item) => item.product.id !== action.product.id
         ),
       };
