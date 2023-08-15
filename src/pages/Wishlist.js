@@ -1,24 +1,32 @@
 import { RiHeartFill } from "react-icons/ri";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "../CartContext";
+import { useCart } from "../AppContext";
 import { get } from "../Api";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
 
-const Wishlist = (product) => {
+const Wishlist = () => {
   const { id } = useParams();
   const [setWishlist] = useState({});
   const items = useCart();
 
-  const getCart = async () => {
+  const getWishlist = async () => {
     const res = await get(`/products/${id}`);
     setWishlist(res?.data);
   };
 
   useCart(() => {
-    getCart();
+    getWishlist();
   }, []);
+
+  if (items.wishlistItems.length === 0) {
+    return (
+      <div className="px-16 py-8 text-center text-2xl">
+        No items in wishlist.
+      </div>
+    );
+  }
 
   return (
     <div className="p-16">
@@ -31,9 +39,9 @@ const Wishlist = (product) => {
         My Wishlist <RiHeartFill />
       </div>
 
-      <Link to={`/products/${product.id}`}>
-        <div className="grid grid-cols-5 gap-8">
-          {items.map((item) => (
+      <div className="grid grid-cols-5 gap-8">
+        {items.wishlistItems.map((item) => (
+          <Link to={`/products/${item.product.id}`}>
             <div className="bg-gray-50 p-4">
               <div className="flex items-center bg-[#FAF9F6] ">
                 <img
@@ -50,9 +58,9 @@ const Wishlist = (product) => {
                 )}
               </div>
             </div>
-          ))}
-        </div>
-      </Link>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,24 +1,22 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "../CartContext";
-import axios from "axios";
+import { useCart } from "../AppContext";
 import { get } from "../Api";
 import Button from "../components/Button";
 import Categories from "../components/Categories";
+import { useCartDispatch } from "../AppContext.js";
 
 const Cart = () => {
   const { id } = useParams();
   const [setCart] = useState({});
   const items = useCart();
-
-  console.log("🚀 ~ file: Cart.js:10 ~ Cart ~ items:", items);
+  const dispatch = useCartDispatch();
 
   const sum =
     Array.isArray(items) &&
     items.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.product.price * currentValue.quantity;
     }, 0);
-  console.log("🚀 ~ file: Cart.js:18 ~ Cart ~ sum:", sum);
 
   const getCart = async () => {
     const res = await get(`/products/${id}`);
@@ -28,6 +26,12 @@ const Cart = () => {
   useCart(() => {
     getCart();
   }, []);
+
+  if (items.cartItems.length === 0) {
+    return (
+      <div className="px-16 py-8 text-center text-2xl">Your cart is empty.</div>
+    );
+  }
 
   return (
     <div className="px-16 py-8">
@@ -45,31 +49,46 @@ const Cart = () => {
             </tr>
             <hr className="pb-8" />
           </thead>
-          {items.map((item) => (
+
+          {items.cartItems.map((item) => (
             <tbody>
               <tr className="text-center text-xl">
                 <td className="px-4 py-4">
-                  {" "}
-                  <div className="flex items-center bg-[#FAF9F6] ">
+                  <div className="flex items-center">
                     <img
-                      className="aspect-[4/3] w-50px rounded object-contain my-4"
-                      src={item.product.image}
+                      className="aspect-[4/3] w-56 rounded object-contain my-4"
+                      src={item?.product?.image}
                       alt="img"
                     />
                   </div>
                 </td>
 
-                <td>{item.product.title}</td>
+                <td>{item?.product?.title}</td>
 
-                <td>${item.product.price}</td>
-                <td>{item.quantity}</td>
-                <td>${item.quantity * item.product.price}</td>
+                <td>${item?.product?.price}</td>
+
+                <td>{item?.quantity}</td>
+                <td>
+                  <div>${item?.quantity * item?.product?.price}</div>
+                  <div className="pt-20">
+                    <Button
+                      color="red"
+                      text="Remove"
+                      onClick={() => {
+                        dispatch({
+                          type: "deletedCart",
+                          product: item?.product,
+                        });
+                      }}
+                    />
+                  </div>
+                </td>
               </tr>
             </tbody>
           ))}
         </table>
         <hr className="pb-8" />
-        <div className="grid grid-cols-2 text-right text-2xl font-medium pr-24">
+        <div className="grid grid-cols-2 text-right text-2xl font-medium px-40">
           <div>
             <div>Sub total</div>
 
@@ -80,10 +99,10 @@ const Cart = () => {
             <div>${sum}</div>
             <div>$300</div>
             <div>${sum + 300}</div>
-            <div className="py-4">
-              <Button color="dark" text="Checkout" />
-            </div>
           </div>
+        </div>
+        <div className="py-4 text-right pr-32">
+          <Button color="dark" text="Checkout" />
         </div>
         <div className="text-3xl font-medium py-12">More on Chic Seduire:</div>
         <Categories />
