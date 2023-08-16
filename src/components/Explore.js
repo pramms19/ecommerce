@@ -17,7 +17,7 @@ const Explore = () => {
       </div>
 
       <div className="relative w-full">
-        <img className=" w-full " src={WomenImg} alt="men" />
+        <img className=" w-full " src={WomenImg} alt="women" />
         <div className="absolute flex flex-col items-center justify-center text-center inset-0 ">
           <div className="text-6xl text-white align-middle justify-center py-8">
             Women

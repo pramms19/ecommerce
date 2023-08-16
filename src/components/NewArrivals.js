@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { get } from "../Api";
 import Card from "./Card";
 import Button from "./Button";
+import { BgImg } from "../assests";
 
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,14 @@ const NewArrivals = () => {
 
   return (
     <div className="py-20">
-      <div className="border-box w-1440px h-531px py-16 px-8 bg-[url('/home/gurzu-12345/Development/react/pramms-store/src/assests/bg-na.png')]">
+      <div
+        className="border-box w-1440px h-531px py-16 px-8"
+        style={{
+          backgroundImage: `url(${BgImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="grid grid-cols-1  md:grid-cols-4 lg:grid-cols-6 gap-4 ">
           <div className="flex align-middle flex-col text-center justify-center ">
             <div>
