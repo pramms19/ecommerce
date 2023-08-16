@@ -19,6 +19,7 @@ import { CartProvider } from "./AppContext.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         </div>
 
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/"
             element={

@@ -10,6 +10,7 @@ import TsImg from "./ts.png";
 import BagsImg from "./bags.png";
 import EmptyImg from "./empty.png";
 import EBImg from "./empty-wishlist.png";
+import ErrImg from "./404-page.png";
 
 export {
   LogoImg,
@@ -23,4 +24,5 @@ export {
   BagsImg,
   EmptyImg,
   EBImg,
+  ErrImg,
 };
