@@ -20,6 +20,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -114,6 +115,16 @@ function App() {
               <>
                 {" "}
                 <Wishlist />
+              </>
+            }
+          />
+
+          <Route
+            path="/about"
+            element={
+              <>
+                {" "}
+                <About />
               </>
             }
           />
