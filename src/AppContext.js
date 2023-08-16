@@ -27,10 +27,8 @@ export function useCartDispatch() {
 function appReducer(items, action) {
   switch (action.type) {
     case "addedCart": {
-      console.log("items", items);
       if (
         items.cartItems.filter((val) => {
-          console.log("val", val);
           return val.product.id === action.product.id;
         }).length > 0
       ) {
@@ -82,7 +80,6 @@ function appReducer(items, action) {
     case "addedWishList": {
       if (
         items.wishlistItems.filter((val) => {
-          console.log("val", val);
           return val.product.id === action.product.id;
         }).length > 0
       ) {
