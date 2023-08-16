@@ -27,7 +27,7 @@ const Wishlist = () => {
         No items in wishlist.
         <div>
           <img
-            className="inline-block align-middle py-8"
+            className="inline-block align-middle py-16"
             src={EBImg}
             alt="img"
           />
