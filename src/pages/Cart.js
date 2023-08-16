@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../AppContext";
@@ -16,9 +17,7 @@ const Cart = () => {
   const sum =
     Array.isArray(items.cartItems) &&
     items.cartItems.reduce((accumulator, currentValue) => {
-      return (
-        accumulator + currentValue.product.price * currentValue.product.quantity
-      );
+      return accumulator + currentValue.product.price * currentValue.product.quantity;
     }, 0);
 
   const getCart = async () => {
@@ -59,7 +58,7 @@ const Cart = () => {
           </thead>
 
           {items.cartItems?.map((item) => (
-            <tbody>
+            <tbody key={item?.product.id}>
               <tr className="text-center text-xl">
                 <td className="px-4 py-4">
                   <div className="flex items-center">
@@ -85,7 +84,7 @@ const Cart = () => {
                       onClick={() => {
                         dispatch({
                           type: "deletedCart",
-                          product: item?.product,
+                          product: item?.product
                         });
                       }}
                     />
