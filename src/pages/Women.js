@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
 import { get } from "../Api";
 import Card from "../components/Card";
@@ -43,11 +44,9 @@ const Women = () => {
           <div className="text-4xl pb-8">All Women</div>
           <div className="grid grid-cols-1  md:grid-cols-4 lg:grid-cols-6 gap-4 ">
             {products.length > 0 &&
-              products.map((product) => <Card product={product} />)}
+              products.map((product) => <Card key={product.id} product={product} />)}
           </div>
-          <div className="text-3xl font-medium py-12">
-            More on Chic Seduire:
-          </div>
+          <div className="text-3xl font-medium py-12">More on Chic Seduire:</div>
           <Categories />
         </div>
       )}

@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import Categories from "./components/Categories";
 import Detail from "./pages/Detail";
 import Jewellery from "./pages/Jewellery";
-import { axiosClient } from "./Api";
 import { Routes, Route } from "react-router-dom";
 import Men from "./pages/Men";
 import Women from "./pages/Women";

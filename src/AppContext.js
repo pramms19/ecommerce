@@ -9,9 +9,7 @@ export function CartProvider({ children }) {
 
   return (
     <AppContext.Provider value={items}>
-      <AppDispatchContext.Provider value={dispatch}>
-        {children}
-      </AppDispatchContext.Provider>
+      <AppDispatchContext.Provider value={dispatch}>{children}</AppDispatchContext.Provider>
     </AppContext.Provider>
   );
 }
@@ -38,10 +36,10 @@ function appReducer(items, action) {
             item.product.id === action.product.id
               ? {
                   ...item,
-                  quantity: item.quantity + 1,
+                  quantity: item.quantity + 1
                 }
               : item
-          ),
+          )
         };
       } else {
         return {
@@ -50,9 +48,9 @@ function appReducer(items, action) {
             ...(items?.cartItems || []),
             {
               quantity: action.quantity,
-              product: action.product,
-            },
-          ],
+              product: action.product
+            }
+          ]
         };
       }
     }
@@ -65,16 +63,14 @@ function appReducer(items, action) {
           } else {
             return item;
           }
-        }),
+        })
       };
     }
 
     case "deletedCart": {
       return {
         ...items,
-        cartItems: items.cartItems?.filter(
-          (item) => item.product.id !== action.product.id
-        ),
+        cartItems: items.cartItems?.filter((item) => item.product.id !== action.product.id)
       };
     }
     case "addedWishList": {
@@ -85,13 +81,13 @@ function appReducer(items, action) {
       ) {
         return {
           ...items,
-          wishlistItems: items.wishlistItems.map((item, idx) =>
+          wishlistItems: items.wishlistItems.map((item) =>
             item.product.id === action.product.id
               ? {
-                  ...item,
+                  ...item
                 }
               : item
-          ),
+          )
         };
       } else {
         return {
@@ -100,9 +96,9 @@ function appReducer(items, action) {
             ...items.wishlistItems,
             {
               quantity: action.quantity,
-              product: action.product,
-            },
-          ],
+              product: action.product
+            }
+          ]
         };
       }
     }
@@ -115,7 +111,7 @@ function appReducer(items, action) {
           } else {
             return item;
           }
-        }),
+        })
       };
     }
     case "deletedWishList": {
@@ -123,7 +119,7 @@ function appReducer(items, action) {
         ...items,
         wishlistItems: items.wishlistItems.filter(
           (item) => item.wishlistItems.product.id !== action.product.id
-        ),
+        )
       };
     }
     default: {
@@ -134,5 +130,5 @@ function appReducer(items, action) {
 
 const initialItems = {
   cartItems: [],
-  wishlistItems: [],
+  wishlistItems: []
 };

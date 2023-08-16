@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { RiHeartFill } from "react-icons/ri";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -26,11 +27,7 @@ const Wishlist = () => {
       <div className="px-16 py-8 text-center text-2xl">
         No items in wishlist.
         <div>
-          <img
-            className="inline-block align-middle py-16"
-            src={EBImg}
-            alt="img"
-          />
+          <img className="inline-block align-middle py-16" src={EBImg} alt="img" />
         </div>
       </div>
     );
@@ -49,7 +46,7 @@ const Wishlist = () => {
 
       <div className="grid grid-cols-5 gap-8">
         {items.wishlistItems.map((item) => (
-          <Link to={`/products/${item.product.id}`}>
+          <Link key={item.product.id} to={`/products/${item.product.id}`}>
             <div className="bg-gray-50 p-4">
               <div className="flex items-center bg-[#FAF9F6] ">
                 <img
@@ -61,9 +58,7 @@ const Wishlist = () => {
               <div className="text-xl">{item.product.title}</div>
               <div className="text-2xl">${item.product.price}</div>
               <div className="flex">
-                {!!item.product.rating && (
-                  <Rating rate={item.product.rating.rate} />
-                )}
+                {!!item.product.rating && <Rating rate={item.product.rating.rate} />}
               </div>
             </div>
           </Link>

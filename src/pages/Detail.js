@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Rating from "../components/Rating";
 import Color from "../components/Color";
 import Size from "../components/Size";
@@ -49,11 +50,10 @@ const Detail = () => {
                       dispatch({
                         type: "addedWishList",
                         product: product,
-                        quantity: 1,
+                        quantity: 1
                       });
                       notif("addedWishList");
-                    }}
-                  >
+                    }}>
                     <RiHeartLine />
                   </button>
                 </div>
@@ -92,7 +92,7 @@ const Detail = () => {
                     dispatch({
                       type: "addedCart",
                       product: product,
-                      quantity: 1,
+                      quantity: 1
                     });
                     notify("addedCart");
                   }}
