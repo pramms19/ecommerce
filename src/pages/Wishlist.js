@@ -5,6 +5,7 @@ import { useCart } from "../AppContext";
 import { get } from "../Api";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
+import { EBImg } from "../assests";
 
 const Wishlist = () => {
   const { id } = useParams();
@@ -24,6 +25,13 @@ const Wishlist = () => {
     return (
       <div className="px-16 py-8 text-center text-2xl">
         No items in wishlist.
+        <div>
+          <img
+            className="inline-block align-middle py-8"
+            src={EBImg}
+            alt="img"
+          />
+        </div>
       </div>
     );
   }
@@ -52,7 +60,7 @@ const Wishlist = () => {
               </div>
               <div className="text-xl">{item.product.title}</div>
               <div className="text-2xl">${item.product.price}</div>
-              <div>
+              <div className="flex">
                 {!!item.product.rating && (
                   <Rating rate={item.product.rating.rate} />
                 )}

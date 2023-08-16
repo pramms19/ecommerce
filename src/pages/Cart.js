@@ -5,6 +5,7 @@ import { get } from "../Api";
 import Button from "../components/Button";
 import Categories from "../components/Categories";
 import { useCartDispatch } from "../AppContext.js";
+import { EmptyImg } from "../assests";
 
 const Cart = () => {
   const { id } = useParams();
@@ -31,7 +32,12 @@ const Cart = () => {
 
   if (items.cartItems?.length === 0) {
     return (
-      <div className="px-16 py-8 text-center text-2xl">Your cart is empty.</div>
+      <div className="px-16 py-8 text-center text-2xl">
+        Your cart is empty.
+        <div>
+          <img className="inline-block align-middle" src={EmptyImg} alt="img" />
+        </div>
+      </div>
     );
   }
 

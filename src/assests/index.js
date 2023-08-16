@@ -8,6 +8,8 @@ import ShoesImg from "./shoes.png";
 import BgImg from "./bg-na.png";
 import TsImg from "./ts.png";
 import BagsImg from "./bags.png";
+import EmptyImg from "./empty.png";
+import EBImg from "./empty-wishlist.png";
 
 export {
   LogoImg,
@@ -19,4 +21,6 @@ export {
   BgImg,
   TsImg,
   BagsImg,
+  EmptyImg,
+  EBImg,
 };
