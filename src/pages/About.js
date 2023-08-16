@@ -3,7 +3,7 @@ const About = () => {
     <div>
       <div className="px-16 pt-8 text-center text-3xl">About Us</div>
       <div className="p-16">
-        <div className="border p-16 text-justify text-xl">
+        <div className="border-2 p-16 text-justify text-xl">
           THE FASHION STORE caters to thoughtful shoppers who appreciate unique
           designs and top quality pieces you just can’t find anywhere else. We
           are constantly curating fresh new collections and looking for the next
