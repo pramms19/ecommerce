@@ -10,6 +10,8 @@ const Button = ({ color, size, text, icon, onClick }) => {
       color === "dark",
     "bg-[#D9D9D9] hover:bg-[#B91C1C] active:bg-[#B91C1C] h-8 text-center text-black px-4 rounded-3xl text-sm":
       color === "red",
+    "bg-[#FBFDFF] hover:bg-[#C9D4E0] active:bg-[#B0C0D0] flex items-center justify-center h-8 text-center px-4 text-[#001427]  rounded-md text-sm":
+      color === "lighter"
   });
 
   return (
