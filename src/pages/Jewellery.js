@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
 import { get } from "../Api";
 import Card from "../components/Card";

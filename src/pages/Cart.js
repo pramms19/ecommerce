@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../AppContext";

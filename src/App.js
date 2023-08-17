@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
@@ -124,6 +125,16 @@ function App() {
               <>
                 {" "}
                 <About />
+              </>
+            }
+          />
+
+          <Route
+            path="/search"
+            element={
+              <>
+                {" "}
+                <SearchBar />
               </>
             }
           />
