@@ -6,11 +6,13 @@ import { get } from "../Api";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
 import { EBImg } from "../assests";
+import { useCartDispatch } from "../AppContext.js";
 
 const Wishlist = () => {
   const { id } = useParams();
   const [setWishlist] = useState({});
   const items = useCart();
+  const dispatch = useCartDispatch();
 
   const getWishlist = async () => {
     const res = await get(`/products/${id}`);
@@ -21,7 +23,7 @@ const Wishlist = () => {
     getWishlist();
   }, []);
 
-  if (items.wishlistItems.length === 0) {
+  if (items.wishlistItems?.length === 0) {
     return (
       <div className="px-16 py-8 text-center text-2xl">
         No items in wishlist.
@@ -45,8 +47,8 @@ const Wishlist = () => {
 
       <div className="grid grid-cols-5 gap-8">
         {items.wishlistItems.map((item) => (
-          <Link key={item.product.id} to={`/products/${item.product.id}`}>
-            <div className="bg-gray-50 p-4">
+          <div className="bg-gray-50 p-4">
+            <Link key={item.product.id} to={`/products/${item.product.id}`}>
               <div className="flex items-center bg-[#FAF9F6] ">
                 <img
                   className="aspect-[4/3] w-50px rounded object-contain my-4"
@@ -54,13 +56,24 @@ const Wishlist = () => {
                   alt="img"
                 />
               </div>
-              <div className="text-xl">{item.product.title}</div>
-              <div className="text-2xl">${item.product.price}</div>
-              <div className="flex">
-                {!!item.product.rating && <Rating rate={item.product.rating.rate} />}
-              </div>
+            </Link>
+            <div className="text-xl flex gap-2">
+              {item.product.title}{" "}
+              <button
+                onClick={() => {
+                  dispatch({
+                    type: "deletedWishList",
+                    product: item?.product
+                  });
+                }}>
+                <RiHeartFill className="text-2xl" />
+              </button>
             </div>
-          </Link>
+            <div className="text-2xl">${item.product.price}</div>
+            <div className="flex">
+              {!!item.product.rating && <Rating rate={item.product.rating.rate} />}
+            </div>
+          </div>
         ))}
       </div>
     </div>

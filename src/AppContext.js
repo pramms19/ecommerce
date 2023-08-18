@@ -117,9 +117,7 @@ function appReducer(items, action) {
     case "deletedWishList": {
       return {
         ...items,
-        wishlistItems: items.wishlistItems.filter(
-          (item) => item.wishlistItems.product.id !== action.product.id
-        )
+        wishlistItems: items.wishlistItems.filter((item) => item.product.id !== action.product.id)
       };
     }
     default: {

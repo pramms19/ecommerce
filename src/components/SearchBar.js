@@ -13,7 +13,7 @@ export default function Search({ open, handleCloseSearch }) {
 
   const getProducts = async () => {
     const res = await get("/products");
-    console.log("🚀 ~ file: SearchBar.js:12 ~ getProducts ~ res:", res.data);
+
     setProducts(res?.data);
   };
 

@@ -16,7 +16,7 @@ const NavIcons = () => {
 
   return (
     <>
-      <ul class="flex gap-8">
+      <ul className="flex gap-8">
         <li>
           <RiSearchLine onClick={handleOpenSearch} role="button" />
         </li>
