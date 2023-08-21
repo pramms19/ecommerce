@@ -155,7 +155,7 @@ export default function Checkout({ open, handleCloseSearch }) {
         </div>
         <div className="text-center text-xl text-[#059669] py-8">Your order has been placed</div>
         <div className="grid gap-y-2 py-4">
-          <Link to="">
+          <Link to="/">
             <Button size="big" text="Go Back to home" />
           </Link>
 

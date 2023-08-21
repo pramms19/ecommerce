@@ -152,7 +152,7 @@ function App() {
         </Routes>
 
         <Footer />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="bottom-right" autoClose="1500" />
       </div>
     </CartProvider>
   );

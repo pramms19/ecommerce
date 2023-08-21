@@ -5,9 +5,10 @@ import { get } from "../Api";
 import Button from "../components/Button";
 import Categories from "../components/Categories";
 import { useCartDispatch } from "../AppContext.js";
-import { EmptyImg } from "../assests";
+import { ESBImg } from "../assests";
 import { Link } from "react-router-dom";
 import Checkout from "../components/Checkout";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { id } = useParams();
@@ -21,9 +22,8 @@ const Cart = () => {
   const handleCloseSearch = () => {
     setOpen(false);
   };
-
+  const notify = () => toast.warn("Invalid");
   const items = useCart();
-  console.log("🚀 ~ file: Cart.js:15 ~ Cart ~ items:", items);
   const dispatch = useCartDispatch();
 
   const sum =
@@ -60,7 +60,7 @@ const Cart = () => {
       <div className="px-16 py-8 text-center text-2xl">
         Your cart is empty.
         <div>
-          <img className="inline-block align-middle" src={EmptyImg} alt="img" />
+          <img className="inline-block align-middle py-16" src={ESBImg} alt="img" />
         </div>
       </div>
     );
@@ -105,9 +105,22 @@ const Cart = () => {
                 <td>${item?.product?.price}</td>
 
                 <td>
-                  <button onClick={() => subtractQuantity(item)}>-</button>
-                  {item?.quantity}
-                  <button onClick={() => addQuantity(item)}>+</button>
+                  <div className="flex justify-center">
+                    <div className="bg-[#D9D9D9] rounded-3xl flex gap-2 justify-center w-20 ">
+                      <button
+                        onClick={() => {
+                          if (item.quantity === 1) {
+                            notify("subtractQuantity");
+                          } else {
+                            subtractQuantity(item);
+                          }
+                        }}>
+                        -
+                      </button>
+                      {item?.quantity}
+                      <button onClick={() => addQuantity(item)}>+</button>
+                    </div>
+                  </div>
                 </td>
                 <td>
                   <div>${item?.quantity * item?.product?.price}</div>

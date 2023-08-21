@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -28,7 +26,6 @@ const MenuDropdown = ({ title, list }) => {
             {list.map((link) => (
               <Menu.Item key={link.title}>
                 {({ active }) => (
-                  // eslint-disable-next-line jsx-a11y/anchor-is-valid
                   <a
                     key={link.title}
                     href="#"
