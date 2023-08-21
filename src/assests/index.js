@@ -11,6 +11,9 @@ import BagsImg from "./bags.png";
 import EmptyImg from "./empty.png";
 import EBImg from "./empty-wishlist.png";
 import ErrImg from "./404-page.png";
+import VisaImg from "./visa.png";
+import PhoneImg from "./phonepay.png";
+import CodImg from "./cod.png";
 
 export {
   LogoImg,
@@ -25,4 +28,7 @@ export {
   EmptyImg,
   EBImg,
   ErrImg,
+  VisaImg,
+  PhoneImg,
+  CodImg
 };

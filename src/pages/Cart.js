@@ -8,6 +8,7 @@ import { useCartDispatch } from "../AppContext.js";
 import { EmptyImg } from "../assests";
 import { Link } from "react-router-dom";
 import Checkout from "../components/Checkout";
+
 const Cart = () => {
   const { id } = useParams();
   const [setCart] = useState({});
@@ -17,7 +18,9 @@ const Cart = () => {
     setOpen(true);
   };
 
-  const handleCloseSearch = () => [setOpen(false)];
+  const handleCloseSearch = () => {
+    setOpen(false);
+  };
 
   const items = useCart();
   console.log("🚀 ~ file: Cart.js:15 ~ Cart ~ items:", items);
@@ -108,22 +111,31 @@ const Cart = () => {
           ))}
         </table>
         <hr className="pb-8" />
-        <div className="grid grid-cols-2 text-right text-2xl font-medium px-40">
-          <div>
-            <div>Sub total</div>
+        <div className="px-32">
+          <table className="table-fixed gap-8 w-full">
+            <tbody className=" text-2xl text-right font-medium">
+              <tr>
+                <td>Sub Total</td>
+                <td>${sum}</td>
+              </tr>
+              <tr>
+                <td>Shipping</td>
+                <td>$300</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>${sum + 300}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <Button color="dark" text="Checkout" onClick={handleOpenSearch} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            <div>Shipping</div>
-            <div>Total</div>
-          </div>
-          <div>
-            <div>${sum}</div>
-            <div>$300</div>
-            <div>${sum + 300}</div>
-          </div>
-        </div>
-        <div className="py-4 text-right pr-32">
-          <Button color="dark" text="Checkout" onClick={handleOpenSearch} />
-        </div>
         <div className="text-3xl font-medium py-12">More on Chic Seduire:</div>
         <Categories />
       </div>

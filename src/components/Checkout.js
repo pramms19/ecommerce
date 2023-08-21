@@ -1,14 +1,23 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
+import { CodImg, PhoneImg, VisaImg } from "../assests";
+import { RiCheckboxCircleFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Checkout({ open, handleCloseSearch }) {
   const cancelButtonRef = useRef(null);
+  const [step, setStep] = useState(1);
   const {
     register,
     formState: { errors }
   } = useForm();
+
+  const handleCloseModal = () => {
+    handleCloseSearch();
+    setStep(1);
+  };
 
   const FirstStep = () => {
     return (
@@ -21,9 +30,7 @@ export default function Checkout({ open, handleCloseSearch }) {
             <input
               placeholder="Enter your province/state"
               {...register("userName", {
-                required: true,
-                minLength: 5,
-                maxLength: 20
+                required: true
               })}
               style={{
                 backgroundColor: "white",
@@ -34,12 +41,6 @@ export default function Checkout({ open, handleCloseSearch }) {
               }}
             />
             {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
-            {errors.userName?.type === "minLength" && (
-              <p role="alert">Minimum 5 characters required</p>
-            )}
-            {errors.userName?.type === "maxLength" && (
-              <p role="alert">You have exceeded the max length</p>
-            )}
           </div>
 
           <div>
@@ -71,11 +72,11 @@ export default function Checkout({ open, handleCloseSearch }) {
           </div>
         </div>
         <div className="grid gap-y-2 py-4">
-          <Button size="big" text="Continue" />
+          <Button size="big" text="Continue" onClick={() => setStep(2)} />
           <Button
             color="light"
             text="Cancel"
-            onClick={() => handleCloseSearch(false)}
+            onClick={() => handleCloseModal()}
             ref={cancelButtonRef}
           />
         </div>
@@ -94,9 +95,7 @@ export default function Checkout({ open, handleCloseSearch }) {
             <input
               placeholder="Enter your full name"
               {...register("userName", {
-                required: true,
-                minLength: 5,
-                maxLength: 20
+                required: true
               })}
               style={{
                 backgroundColor: "white",
@@ -107,12 +106,6 @@ export default function Checkout({ open, handleCloseSearch }) {
               }}
             />
             {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
-            {errors.userName?.type === "minLength" && (
-              <p role="alert">Minimum 5 characters required</p>
-            )}
-            {errors.userName?.type === "maxLength" && (
-              <p role="alert">You have exceeded the max length</p>
-            )}
           </div>
 
           <div>
@@ -131,29 +124,60 @@ export default function Checkout({ open, handleCloseSearch }) {
 
           <div>
             <div className="py-2">Select a payment method:</div>
-            <input
-              placeholder="Enter your address"
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
+            <div className="flex gap-6">
+              <button className="focus:ring  px-4 rounded-3xl">
+                <img src={CodImg} alt="COD" />
+              </button>
+              <button className="focus:ring  px-4 rounded-3xl">
+                <img src={PhoneImg} alt="Phone Pay" />
+              </button>
+              <button className="focus:ring  px-4 rounded-3xl">
+                <img src={VisaImg} alt="Visa" />
+              </button>
+            </div>
           </div>
         </div>
+        <div className="grid gap-y-2 py-2">
+          <Button size="big" text="Continue" onClick={() => setStep(3)} />
+          <Button color="light" text="Cancel" onClick={() => setStep(1)} />
+        </div>
+      </div>
+    );
+  };
+
+  const ThirdStep = () => {
+    return (
+      <div className="px-16 py-32">
+        <div className="flex text-5xl text-[#059669] justify-center">
+          Success
+          <RiCheckboxCircleFill />
+        </div>
+        <div className="text-center text-xl text-[#059669] py-8">Your order has been placed</div>
         <div className="grid gap-y-2 py-4">
-          <Button size="big" text="Continue" />
+          <Link to="">
+            <Button size="big" text="Go Back to home" />
+          </Link>
+
           <Button
             color="light"
             text="Cancel"
-            onClick={() => handleCloseSearch(false)}
+            onClick={() => handleCloseModal()}
             ref={cancelButtonRef}
           />
         </div>
       </div>
     );
+  };
+
+  const renderComponents = () => {
+    switch (step) {
+      case 1:
+        return <FirstStep />;
+      case 2:
+        return <SecondStep />;
+      case 3:
+        return <ThirdStep />;
+    }
   };
 
   return (
@@ -162,7 +186,7 @@ export default function Checkout({ open, handleCloseSearch }) {
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={handleCloseSearch}>
+        onClose={handleCloseModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -188,7 +212,7 @@ export default function Checkout({ open, handleCloseSearch }) {
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start"></div>
                 </div>
-                {false ? <FirstStep /> : <SecondStep />}
+                {renderComponents()}
               </Dialog.Panel>
             </Transition.Child>
           </div>
