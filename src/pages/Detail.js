@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Rating from "../components/Rating";
 import Color from "../components/Color";
 import Size from "../components/Size";

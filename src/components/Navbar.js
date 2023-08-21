@@ -7,7 +7,7 @@ const Navbar = () => {
     { href: "/men", label: "Men" },
     { href: "/women", label: "Women" },
     { href: "/new-arrivals", label: "New Arrivals" },
-    { href: "/hot-picks", label: "Hot Picks" },
+    { href: "/hot-picks", label: "Hot Picks" }
   ];
 
   const summerItems = [
@@ -15,7 +15,7 @@ const Navbar = () => {
     { href: "/men", label: "Men" },
     { href: "/women", label: "Women" },
     { href: "/new-arrivals", label: "New Arrivals" },
-    { href: "/hot-picks", label: "Hot Picks" },
+    { href: "/hot-picks", label: "Hot Picks" }
   ];
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { RiHeartFill } from "react-icons/ri";
 import { useState } from "react";
 import { useParams } from "react-router-dom";

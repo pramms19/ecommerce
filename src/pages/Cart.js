@@ -32,6 +32,20 @@ const Cart = () => {
       return accumulator + currentValue?.product?.price * currentValue?.quantity;
     }, 0);
 
+  const addQuantity = (item) => {
+    dispatch({
+      type: "addQuantity",
+      product: item?.product
+    });
+  };
+
+  const subtractQuantity = (item) => {
+    dispatch({
+      type: "subtractQuantity",
+      product: item?.product
+    });
+  };
+
   const getCart = async () => {
     const res = await get(`/products/${id}`);
     setCart(res?.data);
@@ -90,7 +104,11 @@ const Cart = () => {
 
                 <td>${item?.product?.price}</td>
 
-                <td>{item?.quantity}</td>
+                <td>
+                  <button onClick={() => subtractQuantity(item)}>-</button>
+                  {item?.quantity}
+                  <button onClick={() => addQuantity(item)}>+</button>
+                </td>
                 <td>
                   <div>${item?.quantity * item?.product?.price}</div>
                   <div className="pt-20">

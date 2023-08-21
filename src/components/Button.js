@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import classNames from "classnames";
 
 const Button = ({ color, size, text, icon, onClick }) => {

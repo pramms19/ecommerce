@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import React, { useState } from "react";
@@ -9,8 +10,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
   const [loginResult, setLoginResult] = useState(null);
@@ -19,7 +19,7 @@ const Login = () => {
     console.log(value);
     const postData = {
       username: value.userName,
-      password: value.password,
+      password: value.password
     };
 
     axios
@@ -48,7 +48,7 @@ const Login = () => {
                   required: true,
                   minLength: 5,
                   maxLength: 20,
-                  pattern: /^[A-Za-z]+$/i,
+                  pattern: /^[A-Za-z]+$/i
                 })}
                 placeholder="Enter username"
                 style={{
@@ -56,22 +56,18 @@ const Login = () => {
                   borderRadius: "4px",
                   padding: "10px",
                   width: "100%",
-                  border: " 1px solid #DDD",
+                  border: " 1px solid #DDD"
                 }}
               />
 
-              {errors.userName?.type === "required" && (
-                <p role="alert">Username is required</p>
-              )}
+              {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
               {errors.userName?.type === "minLength" && (
                 <p role="alert">Minimum 5 characters required</p>
               )}
               {errors.userName?.type === "maxLength" && (
                 <p role="alert">You have exceeded the max length</p>
               )}
-              {errors.userName?.type === "pattern" && (
-                <p role="alert">Invalid username</p>
-              )}
+              {errors.userName?.type === "pattern" && <p role="alert">Invalid username</p>}
             </div>
             Password
             <div className="pb-4">
@@ -79,7 +75,7 @@ const Login = () => {
                 {...register("password", {
                   required: true,
                   minLength: 5,
-                  maxLength: 20,
+                  maxLength: 20
                 })}
                 placeholder="Enter password"
                 style={{
@@ -87,12 +83,10 @@ const Login = () => {
                   borderRadius: "4px",
                   padding: "10px",
                   width: "100%",
-                  border: " 1px solid #DDD",
+                  border: " 1px solid #DDD"
                 }}
               />
-              {errors.password?.type === "required" && (
-                <p role="alert">Password is required</p>
-              )}
+              {errors.password?.type === "required" && <p role="alert">Password is required</p>}
               {errors.password?.type === "minLength" && (
                 <p role="alert">Minimum 5 characters required</p>
               )}
@@ -103,8 +97,7 @@ const Login = () => {
             <button
               onClick={handleSubmit(handleOnSubmit)}
               type="submit"
-              className="flex-row w-full py-4"
-            >
+              className="flex-row w-full py-4">
               <Button size="big" text="Login" />
             </button>
           </div>

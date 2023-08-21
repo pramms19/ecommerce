@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useReducer } from "react";
 
 const AppContext = createContext(null);
@@ -32,7 +33,7 @@ function appReducer(items, action) {
       ) {
         return {
           ...items,
-          cartItems: items.cartItems.map((item, idx) =>
+          cartItems: items.cartItems.map((item) =>
             item.product.id === action.product.id
               ? {
                   ...item,
@@ -120,6 +121,35 @@ function appReducer(items, action) {
         wishlistItems: items.wishlistItems.filter((item) => item.product.id !== action.product.id)
       };
     }
+
+    case "addQuantity": {
+      return {
+        ...items,
+        cartItems: items.cartItems.map((item) =>
+          item.product.id === action.product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1
+              }
+            : item
+        )
+      };
+    }
+
+    case "subtractQuantity": {
+      return {
+        ...items,
+        cartItems: items.cartItems.map((item) =>
+          item.product.id === action.product.id
+            ? {
+                ...item,
+                quantity: item.quantity - 1
+              }
+            : item
+        )
+      };
+    }
+
     default: {
       throw Error("Unknown action: " + action.type);
     }
