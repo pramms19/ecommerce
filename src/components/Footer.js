@@ -49,9 +49,7 @@ const Footer = () => {
         </ul>
       </div>
       <hr />
-      <p className="py-6 text-center font-thin text-white">
-        Copyright 2023. All Rights Reserved.
-      </p>
+      <p className="py-6 text-center font-thin text-white">Copyright 2023. All Rights Reserved.</p>
     </div>
   );
 };

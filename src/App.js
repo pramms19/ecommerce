@@ -21,6 +21,7 @@ import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import SearchBar from "./components/SearchBar";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -138,10 +139,20 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="/checkout"
+            element={
+              <>
+                {" "}
+                <Checkout />
+              </>
+            }
+          />
         </Routes>
 
         <Footer />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="bottom-right" autoClose="1500" />
       </div>
     </CartProvider>
   );

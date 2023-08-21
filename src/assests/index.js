@@ -8,9 +8,12 @@ import ShoesImg from "./shoes.png";
 import BgImg from "./bg-na.png";
 import TsImg from "./ts.png";
 import BagsImg from "./bags.png";
-import EmptyImg from "./empty.png";
 import EBImg from "./empty-wishlist.png";
 import ErrImg from "./404-page.png";
+import VisaImg from "./visa.png";
+import PhoneImg from "./phonepay.png";
+import CodImg from "./cod.png";
+import ESBImg from "./empty-cart.png";
 
 export {
   LogoImg,
@@ -22,7 +25,10 @@ export {
   BgImg,
   TsImg,
   BagsImg,
-  EmptyImg,
   EBImg,
   ErrImg,
+  VisaImg,
+  PhoneImg,
+  CodImg,
+  ESBImg
 };

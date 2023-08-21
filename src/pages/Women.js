@@ -17,7 +17,7 @@ const Women = () => {
 
   useEffect(() => {
     getProducts(products);
-  });
+  }, []);
 
   return (
     <>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState, Fragment, useRef } from "react";
 import { get } from "../Api";
 import Card from "./Card";
@@ -13,7 +14,7 @@ export default function Search({ open, handleCloseSearch }) {
 
   const getProducts = async () => {
     const res = await get("/products");
-    console.log("🚀 ~ file: SearchBar.js:12 ~ getProducts ~ res:", res.data);
+
     setProducts(res?.data);
   };
 

@@ -1,22 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Rating from "../components/Rating";
 import Color from "../components/Color";
 import Size from "../components/Size";
 import Button from "../components/Button";
-import { RiShoppingBagLine } from "react-icons/ri";
-import { RiHeartLine } from "react-icons/ri";
+import { RiHeartLine, RiShoppingBagLine } from "react-icons/ri";
+import { RiHeartFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "../Api";
 import { useCartDispatch } from "../AppContext.js";
 import { toast } from "react-toastify";
+import { useCart } from "../AppContext";
 
 const Detail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const dispatch = useCartDispatch();
-  const notify = () => toast("Added to bag");
-  const notif = () => toast("Added to wishlist");
+  const notify = () => toast.info("Added to bag");
+  const notif = () => toast.info("Added to wishlist");
+  const notification = () => toast.info("Removed from wishlist");
+  const items = useCart();
+  const { wishlistItems } = items;
+  console.log("🚀 ~ file: Detail.js:22 ~ Detail ~ wishlistItems:", wishlistItems);
 
   const getProduct = async () => {
     const res = await get(`/products/${id}`);
@@ -25,7 +29,6 @@ const Detail = () => {
 
   useEffect(() => {
     getProduct();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -47,14 +50,28 @@ const Detail = () => {
                   <div>{product.title}</div>
                   <button
                     onClick={() => {
-                      dispatch({
-                        type: "addedWishList",
-                        product: product,
-                        quantity: 1
-                      });
-                      notif("addedWishList");
+                      if (wishlistItems.map((x) => x.product.id).includes(product.id)) {
+                        dispatch({
+                          type: "deletedWishList",
+                          product: product,
+                          quantity: 1
+                        });
+                        notification("deletedWishList");
+                      } else {
+                        dispatch({
+                          type: "addedWishList",
+                          product: product,
+                          quantity: 1
+                        });
+
+                        notif("addedWishList");
+                      }
                     }}>
-                    <RiHeartLine />
+                    {wishlistItems.map((x) => x.product.id).includes(product.id) ? (
+                      <RiHeartFill />
+                    ) : (
+                      <RiHeartLine />
+                    )}
                   </button>
                 </div>
 
