@@ -60,14 +60,26 @@ const Login = () => {
                 }}
               />
 
-              {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
+              {errors.userName?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  Username is required
+                </p>
+              )}
               {errors.userName?.type === "minLength" && (
-                <p role="alert">Minimum 5 characters required</p>
+                <p className="text-[#B91C1C]" role="alert">
+                  Minimum 5 characters required
+                </p>
               )}
               {errors.userName?.type === "maxLength" && (
-                <p role="alert">You have exceeded the max length</p>
+                <p className="text-[#B91C1C]" role="alert">
+                  You have exceeded the max length
+                </p>
               )}
-              {errors.userName?.type === "pattern" && <p role="alert">Invalid username</p>}
+              {errors.userName?.type === "pattern" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  Invalid username
+                </p>
+              )}
             </div>
             Password
             <div className="pb-4">
@@ -86,12 +98,20 @@ const Login = () => {
                   border: " 1px solid #DDD"
                 }}
               />
-              {errors.password?.type === "required" && <p role="alert">Password is required</p>}
+              {errors.password?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  Password is required
+                </p>
+              )}
               {errors.password?.type === "minLength" && (
-                <p role="alert">Minimum 5 characters required</p>
+                <p className="text-[#B91C1C]" role="alert">
+                  Minimum 5 characters required
+                </p>
               )}
               {errors.password?.type === "maxLength" && (
-                <p role="alert">You have exceeded the max length</p>
+                <p className="text-[#B91C1C]" role="alert">
+                  You have exceeded the max length
+                </p>
               )}
             </div>
             <button

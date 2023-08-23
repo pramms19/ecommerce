@@ -26,8 +26,8 @@ import Checkout from "./components/Checkout";
 function App() {
   return (
     <CartProvider>
-      <div className="home">
-        <div className="border-box w-1440px flex items-center justify-between mb-2 p-4 text-lg px-16">
+      <div className="">
+        <div className="flex items-center justify-between mb-2 p-4 text-lg px-16">
           <Header />
           <Navbar />
           <NavIcons />

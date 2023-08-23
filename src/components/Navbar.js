@@ -19,7 +19,7 @@ const Navbar = () => {
   ];
 
   return (
-    <ul className="flex gap-16 text-justify text-lg font-thin  ">
+    <ul className=" gap-8 text-justify text-lg font-thin  hidden lg:flex ">
       <li className="flex px-4 rounded hover:bg-[#D9D9D9]">
         <MenuDropdown title="Winter" list={winterItems} />
       </li>

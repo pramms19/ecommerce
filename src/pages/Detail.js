@@ -35,16 +35,16 @@ const Detail = () => {
     <div className="px-16 pb-16 w-full">
       <div className="py-8 text-[#8D8D8D]">{product.category}</div>
       {product && (
-        <div className="flex">
+        <div className="flex gap-16">
           <div className="flex items-center bg-[#FAF9F6]">
             <img
-              className="aspect-[4/3] w-full rounded object-contain my-4"
+              className="aspect-[4/3] max-w-md w-full rounded object-contain my-4"
               src={product.image}
               alt="img"
             />
           </div>
           <div>
-            <div className="flex-row w-full">
+            <div className="flex-row max-w-lg">
               <div className="px-8 text-4xl font-medium ">
                 <div className="flex justify-between">
                   <div>{product.title}</div>
