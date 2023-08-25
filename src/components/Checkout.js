@@ -12,8 +12,19 @@ export default function Checkout({ open, handleCloseSearch }) {
   const [step, setStep] = useState(1);
   const {
     register,
+    handleSubmit,
     formState: { errors }
   } = useForm();
+
+  const handleOnSubmit1 = () => {
+    console.log("Submitting step 1");
+    setStep(2);
+  };
+
+  const handleOnSubmit2 = () => {
+    console.log("Submitting step 2");
+    setStep(3);
+  };
 
   const handleCloseModal = () => {
     handleCloseSearch();
@@ -26,60 +37,82 @@ export default function Checkout({ open, handleCloseSearch }) {
         <div className="text-3xl text-center">Shipping</div>
         <div className="text-center py-4">Fill your shipping address to proceed</div>
         <div className="grid gap-y-4">
-          <div>
-            <div className="py-2">Province/State</div>
-            <input
-              placeholder="Enter your province/state"
-              {...register("userName", {
-                required: true
-              })}
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
-            {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
-          </div>
+          <form onSubmit={handleSubmit(handleOnSubmit1)}>
+            <div>
+              <div className="py-2">Province/State</div>
+              <input
+                placeholder="Enter your province/state"
+                {...register("state", {
+                  required: true
+                })}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  width: "100%",
+                  border: " 1px solid #DDD"
+                }}
+              />
+              {errors.state?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  This field is required
+                </p>
+              )}
+            </div>
 
-          <div>
-            <div className="py-2">City</div>
-            <input
-              placeholder="Enter your city"
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
-          </div>
+            <div>
+              <div className="py-2">City</div>
+              <input
+                placeholder="Enter your city"
+                {...register("city", {
+                  required: true
+                })}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  width: "100%",
+                  border: " 1px solid #DDD"
+                }}
+              />
+              {errors.city?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  This field is required
+                </p>
+              )}
+            </div>
 
-          <div>
-            <div className="py-2">Address</div>
-            <input
-              placeholder="Enter your address"
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
-          </div>
-        </div>
-        <div className="grid gap-y-2 py-4">
-          <Button size="big" text="Continue" onClick={() => setStep(2)} />
-          <Button
-            color="light"
-            text="Cancel"
-            onClick={() => handleCloseModal()}
-            ref={cancelButtonRef}
-          />
+            <div>
+              <div className="py-2">Address</div>
+              <input
+                placeholder="Enter your address"
+                {...register("address", {
+                  required: true
+                })}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  width: "100%",
+                  border: " 1px solid #DDD"
+                }}
+              />
+              {errors.address?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  This field is required
+                </p>
+              )}
+            </div>
+            <div className="grid gap-y-2 py-4">
+              <Button size="big" text="Continue" type="submit" />
+              <Button
+                color="light"
+                text="Cancel"
+                onClick={() => handleCloseModal()}
+                ref={cancelButtonRef}
+              />
+            </div>
+          </form>
         </div>
       </div>
     );
@@ -91,56 +124,71 @@ export default function Checkout({ open, handleCloseSearch }) {
         <div className="text-3xl text-center">Payment</div>
         <div className="text-center py-4">Choose your payment method</div>
         <div className="grid gap-y-4">
-          <div>
-            <div className="py-2">Full name</div>
-            <input
-              placeholder="Enter your full name"
-              {...register("userName", {
-                required: true
-              })}
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
-            {errors.userName?.type === "required" && <p role="alert">Username is required</p>}
-          </div>
-
-          <div>
-            <div className="py-2">Phone number</div>
-            <input
-              placeholder="Enter your phone number"
-              style={{
-                backgroundColor: "white",
-                borderRadius: "4px",
-                padding: "10px",
-                width: "100%",
-                border: " 1px solid #DDD"
-              }}
-            />
-          </div>
-
-          <div>
-            <div className="py-2">Select a payment method:</div>
-            <div className="flex gap-6">
-              <button className="focus:ring  px-4 rounded-3xl">
-                <img src={CodImg} alt="COD" />
-              </button>
-              <button className="focus:ring  px-4 rounded-3xl">
-                <img src={PhoneImg} alt="Phone Pay" />
-              </button>
-              <button className="focus:ring  px-4 rounded-3xl">
-                <img src={VisaImg} alt="Visa" />
-              </button>
+          <form onSubmit={handleSubmit(handleOnSubmit2)}>
+            <div>
+              <div className="py-2">Full name</div>
+              <input
+                placeholder="Enter your full name"
+                {...register("fullName", {
+                  required: true
+                })}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  width: "100%",
+                  border: " 1px solid #DDD"
+                }}
+              />
+              {errors.fullName?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  This field is required
+                </p>
+              )}
             </div>
-          </div>
-        </div>
-        <div className="grid gap-y-2 py-2">
-          <Button size="big" text="Continue" onClick={() => setStep(3)} />
-          <Button color="light" text="Cancel" onClick={() => setStep(1)} />
+
+            <div>
+              <div className="py-2">Phone number</div>
+              <input
+                placeholder="Enter your phone number"
+                {...register("phoneNumber", {
+                  required: true
+                })}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  width: "100%",
+                  border: " 1px solid #DDD"
+                }}
+              />
+              {errors.phoneNumber?.type === "required" && (
+                <p className="text-[#B91C1C]" role="alert">
+                  This field is required
+                </p>
+              )}
+            </div>
+
+            <div>
+              <div className="py-2">Select a payment method:</div>
+              <div className="flex gap-6">
+                <div className="focus:ring  px-4 rounded-3xl">
+                  <img src={CodImg} alt="COD" />
+                </div>
+                <div className="focus:ring  px-4 rounded-3xl">
+                  <img src={PhoneImg} alt="Phone Pay" />
+                </div>
+                <div className="focus:ring  px-4 rounded-3xl">
+                  <img src={VisaImg} alt="Visa" />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-y-2 py-2">
+              <Button size="big" text="Continue" type="submit" />
+              <Button color="light" text="Cancel" onClick={() => setStep(1)} />
+            </div>
+          </form>
         </div>
       </div>
     );

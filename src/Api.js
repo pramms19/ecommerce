@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const baseURL = "https://fakestoreapi.com/";
 
 const headers = {
-  "Content-type": "application/json",
+  "Content-type": "application/json"
 };
 
 const axiosClient = axios.create({
   baseURL,
-  headers,
+  headers
 });
 
 const get = async (url) => {

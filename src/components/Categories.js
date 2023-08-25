@@ -7,32 +7,32 @@ const Categories = () => {
       src: JacketsImg,
       alt: "img",
       href: "/jackets",
-      label: "Jackets",
+      label: "Jackets"
     },
     {
       src: ShoesImg,
       alt: "img",
       href: "/shoes",
-      label: "Shoes",
+      label: "Shoes"
     },
     {
       src: BagsImg,
       alt: "img",
       href: "/bags",
-      label: "Bags",
+      label: "Bags"
     },
     {
       src: TsImg,
       alt: "img",
       href: "/t-shirts",
-      label: "T-shirts",
-    },
+      label: "T-shirts"
+    }
   ];
 
   return (
     <div className="grid grid-cols-4 place-items-stretch object-fill overflow-hidden pb-20 ">
       {arr.map((x) => (
-        <Image img={x} />
+        <Image img={x} key={x} />
       ))}
     </div>
   );

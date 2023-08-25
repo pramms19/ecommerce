@@ -15,7 +15,8 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "comma-dangle": 2
+        "comma-dangle": 2,
+        "react/prop-types": 0
         
     }
 }
